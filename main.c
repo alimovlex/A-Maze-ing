@@ -7,6 +7,7 @@
 
 int	main(int argc, char **argv)
 {
+    generate_maze_walls(25, 25, "test.txt");
     const char *filename = "config.txt";
     char argument[strlen(filename) + 1];
     const char *src = *(++argv);
