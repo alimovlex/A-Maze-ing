@@ -1,5 +1,13 @@
 #include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include "maze.h"
+
+#define Log(fmt, ...) \
+    printf("[%s] [%s] [Line %d]: " fmt "\n", __FILE_NAME__, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
 #define A "o"
 #define B "-"
@@ -59,4 +67,50 @@ void	rush(int x, int y)
 	{
 		first_last(x);
 	}
+}
+
+void fill_maze_parameters(char *buffer, struct s_maze *maze)
+{
+    const int size = 6;
+    int values[size], i = 0;
+    while (*buffer && i < size)
+    {
+        if (isdigit(*buffer))
+        {
+            char *end;
+            int value = (int)strtol(buffer, &end, 10);
+            //printf("Assigned number: %d\n", value);
+            *(values + i) = value;
+            i++;
+            buffer = end;
+        }
+        else
+            buffer++;
+    }
+    maze->width = values[0];
+    maze->height = values[1];
+    maze->entry_x = values[2];
+    maze->entry_y = values[3];
+    maze->exit_x = values[4];
+    maze->exit_y = values[5];
+    /*
+    i = 0;
+    while(i < size)
+        printf("ASSIGNED VALUES = %d\n", values[i++]);
+    */
+}
+
+int read_file(const char *filename)
+{
+    const uint  size = 74;
+    char buffer[size];
+    struct s_maze maze;
+    int fd = open(filename, O_RDONLY);
+    if (fd < 0)
+        return (-1);
+    else
+        read(fd, buffer, size - 1);
+    //printf("%s", buffer);
+    fill_maze_parameters(buffer, &maze);
+    return 0;
 }
