@@ -1,9 +1,9 @@
 # A simple Makefile for the A-Maze-ing project
 
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c99
+CC = cc
+CFLAGS = -g
 
-SRCS = main.c maze.c config.c utils.c
+SRCS = main.c maze.c
 OBJS = $(SRCS:.c=.o)
 
 TARGET = amazing
