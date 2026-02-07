@@ -1,0 +1,6 @@
+# Maze dimensions
+width 30
+height 15
+
+# Seed for the random number generator (for reproducibility)
+seed 12345
