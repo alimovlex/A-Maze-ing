@@ -121,3 +121,4 @@ Use:
 +, -, |
 E for entry
 X for exit
+J for joker 
