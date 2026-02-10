@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
             argument[i++] = *src++;
     argument[i] = '\0';
     if (strcmp(filename, argument) == 0)
-        rush(5, 5);
+        read_file(filename);
     else
         Log("No match: %s != %s", filename, argument);
 
