@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #include <stdbool.h>
 #pragma once
 struct s_maze
@@ -12,4 +10,3 @@ struct s_maze
 
 void rush(int x, int y);
 int read_file(const char *filename);
->>>>>>> origin/alalimov-test

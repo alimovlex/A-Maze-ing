@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -121,4 +119,3 @@ int read_file(const char *filename)
     rush(maze.exit_x, maze.exit_y);
     return 0;
 }
->>>>>>> origin/alalimov-test
