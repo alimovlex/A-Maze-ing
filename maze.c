@@ -73,6 +73,7 @@ void fill_maze_parameters(char *buffer, struct s_maze *maze)
 {
     const int size = 6;
     int values[size], i = 0;
+    maze->is_perfect = false;
     while (*buffer && i < size)
     {
         if (isdigit(*buffer))
@@ -84,6 +85,8 @@ void fill_maze_parameters(char *buffer, struct s_maze *maze)
             i++;
             buffer = end;
         }
+        else if (strcmp(buffer, "True") == 0)
+            maze->is_perfect = true;
         else
             buffer++;
     }
@@ -93,6 +96,7 @@ void fill_maze_parameters(char *buffer, struct s_maze *maze)
     maze->entry_y = values[3];
     maze->exit_x = values[4];
     maze->exit_y = values[5];
+    printf("%b\n", maze->is_perfect);
     /*
     i = 0;
     while(i < size)
@@ -112,5 +116,6 @@ int read_file(const char *filename)
         read(fd, buffer, size - 1);
     //printf("%s", buffer);
     fill_maze_parameters(buffer, &maze);
+    rush(maze.exit_x, maze.exit_y);
     return 0;
 }
