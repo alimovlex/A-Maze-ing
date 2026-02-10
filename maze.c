@@ -96,7 +96,7 @@ void fill_maze_parameters(char *buffer, struct s_maze *maze)
     maze->entry_y = values[3];
     maze->exit_x = values[4];
     maze->exit_y = values[5];
-    printf("%b\n", maze->is_perfect);
+    printf("%d\n", maze->is_perfect);
     /*
     i = 0;
     while(i < size)
@@ -106,7 +106,7 @@ void fill_maze_parameters(char *buffer, struct s_maze *maze)
 
 int read_file(const char *filename)
 {
-    const uint  size = 74;
+    const unsigned int  size = 74;
     char buffer[size];
     struct s_maze maze;
     int fd = open(filename, O_RDONLY);
