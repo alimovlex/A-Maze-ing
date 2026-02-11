@@ -3,7 +3,7 @@
 CC = cc
 CFLAGS = -g
 
-SRCS = main.c maze.c search.c
+SRCS = main.c maze.c maze_utils.c search.c 
 OBJS = $(SRCS:.c=.o)
 
 TARGET = amazing

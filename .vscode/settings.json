@@ -1,0 +1,11 @@
+{
+    "editor.detectIndentation": false,
+    "editor.insertSpaces": false,
+    "editor.tabSize": 4,
+	"[c]": {
+        "editor.defaultFormatter": "keyhr.42-c-format"
+	},
+	"files.associations": {
+		"string_view": "c"
+	},
+}
