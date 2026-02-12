@@ -115,11 +115,11 @@ int read_file(const char *filename, t_maze *maze)
     return 0;
 }
 
-void init_grid(t_maze *maze)
+t_maze *init_grid(t_maze *maze)
 {
 	int size = (maze->width * maze->height);
 	printf("allocating %d bytes\n", size);
-    t_cell **grid = (t_cell *)calloc(size, sizeof(t_cell));
+    t_cell *grid = (t_cell *)calloc(size, sizeof(t_cell));
     if (!grid)
         return NULL;
     int o = 0, x = 0, y = 0, z = 0;
@@ -136,11 +136,11 @@ void init_grid(t_maze *maze)
         y++;
     }
     z = 0;
-    // now the neighbor linking is in the making: 
+    // now the neighbor linking is in the making:
     while (maze->grid[z])
     {
         if (maze->grid[z - maze->width] != NULL) // checking for Nothern neighbor
-            maze->grid[z]->options[o] = maze->grid[z - maze->width];
+            maze->grid[z]->options[o] = *maze->grid[z - maze->width];
         o++;
         if (maze->grid[z + 1] != NULL) // checking for Easter neighbor
             maze->grid[z]->options = maze->grid[z + 1];

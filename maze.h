@@ -13,8 +13,6 @@ typedef struct s_keyvaluepair
     void *value;
 } t_keyvaluepair;
 
-typedef struct s_cell;
-
 typedef struct s_maze
 {
     int width, height;
@@ -28,12 +26,12 @@ typedef struct s_cell
 {
     int x, y;
     struct s_maze maze;
-    struct s_cell **options; // between 0 and 4.
-    struct s_cell **walled; // between 0 and 4.
+    struct s_cell *options; // between 0 and 4.
+    struct s_cell *walled; // between 0 and 4.
 } t_cell;
 
 void rush(int x, int y);
 int read_file(const char *filename, t_maze *maze);
-void init_grid(t_maze *maze);
+t_maze *init_grid(t_maze *maze);
 void free_maze(t_maze *maze);
 void fill_maze_parameters(char *buffer, t_maze *maze);
